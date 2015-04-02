@@ -1,12 +1,11 @@
-# wkentaro.zsh-theme
+# zsh-theme
 Simple zshell theme for git user.
 
 Installation
 ------------
 ```zsh
-% git clone https://github.com/wkentaro/wkentaro.zsh-theme.git
-% cp wkentaro.zsh-theme/wkentaro.zsh-theme ~/.wkentaro.zsh-theme
-% echo "source ~/.wkentaro.zsh-theme" >> .zshrc
+% git clone https://github.com/wkentaro/zsh-theme.git ~/.zsh-theme
+% echo "source ~/.zsh-theme/theme.zsh" >> .zshrc
 ```
 
 Normal
