@@ -35,9 +35,9 @@ Staged Changes (Green)
 ----------------------
 .. image:: img/staged_changes.png
 
-Unstaged Changes (Yellow)
+Not staged Changes (Yellow)
 -------------------------
-.. image:: img/unstaged_changes.png
+.. image:: img/not_staged_changes.png
 
 License
 -------
