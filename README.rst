@@ -1,11 +1,12 @@
 =========
 zsh-theme
 =========
-Simple zshell theme for git user.
 
-.. image :: https://travis-ci.org/wkentaro/homebrew-trr.svg
+.. image :: https://travis-ci.org/wkentaro/zsh-theme.svg
   :alt: Build Status
-  :target: https://travis-ci.org/wkentaro/homebrew-trr
+  :target: https://travis-ci.org/wkentaro/zsh-theme
+
+Simple zshell theme for git user.
 
 Installation
 ============
