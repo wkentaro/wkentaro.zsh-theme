@@ -1,0 +1,7 @@
+language: zsh
+script:
+  - source theme.zsh || { echo "failed to source" ; exit 1 ; }
+notifications:
+  email:
+    on_success: always
+    on_failure: always
