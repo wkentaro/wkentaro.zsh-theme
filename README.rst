@@ -9,6 +9,10 @@ zsh-theme
 .. image:: https://badge.fury.io/gh/wkentaro%2Fzsh-theme.svg
   :target: http://badge.fury.io/gh/wkentaro%2Fzsh-theme
 
+.. image:: https://img.shields.io/badge/license-MIT-blue.svg
+  :alt: MIT License
+  :target: https://github.com/wkentaro/zsh-theme/blob/master/LICENSE
+
 Simple zshell theme for git user.
 
 Installation
