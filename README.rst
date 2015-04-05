@@ -23,6 +23,9 @@ Installation
   % git clone https://github.com/wkentaro/zsh-theme.git ~/.zsh-theme
   % echo "source ~/.zsh-theme/theme.zsh" >> .zshrc
 
+Samples
+=======
+
 Normal
 ------
 .. image:: img/normal.png
@@ -40,6 +43,8 @@ Not staged Changes (Yellow)
 .. image:: img/not_staged_changes.png
 
 License
--------
-`MIT <LICENSE>`_
+=======
+| Copyright (C) 2015 Kentaro Wada
+| Released under the MIT license
+| https://github.com/wkentaro/zsh-theme/blob/master/LICENSE
 
