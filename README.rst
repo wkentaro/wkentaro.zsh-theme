@@ -44,7 +44,7 @@ Not staged Changes (Yellow)
 
 License
 =======
-Copyright (C) 2015 Kentaro Wada
-Released under the MIT license
-https://github.com/wkentaro/zsh-theme/blob/master/LICENSE
+| Copyright (C) 2015 Kentaro Wada
+| Released under the MIT license
+| https://github.com/wkentaro/zsh-theme/blob/master/LICENSE
 
