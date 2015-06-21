@@ -1,3 +1,4 @@
+# vim: set ft=zsh:
 autoload -U colors && colors
 
 autoload -Uz vcs_info
@@ -22,4 +23,3 @@ PROMPT='%(!.%{$fg[red]%}.%{$fg[green]%}%n@)%m:%{$fg_bold[blue]%}%c%{$fg_bold[mag
 
 autoload -U add-zsh-hook
 add-zsh-hook precmd  theme_precmd
-
