@@ -1,17 +1,17 @@
-=========
-zsh-theme
-=========
+==================
+wkentaro.zsh-theme
+==================
 
-.. image:: https://travis-ci.org/wkentaro/zsh-theme.svg
+.. image:: https://travis-ci.org/wkentaro/wkentaro.zsh-theme.svg
   :alt: Build Status
-  :target: https://travis-ci.org/wkentaro/zsh-theme
+  :target: https://travis-ci.org/wkentaro/wkentaro.zsh-theme
 
-.. image:: https://badge.fury.io/gh/wkentaro%2Fzsh-theme.svg
-  :target: http://badge.fury.io/gh/wkentaro%2Fzsh-theme
+.. image:: https://badge.fury.io/gh/wkentaro%2Fwkentaro.zsh-theme.svg
+  :target: http://badge.fury.io/gh/wkentaro%2Fwkentaro.zsh-theme
 
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
   :alt: MIT License
-  :target: https://github.com/wkentaro/zsh-theme/blob/master/LICENSE
+  :target: https://github.com/wkentaro/wkentaro.zsh-theme/blob/master/LICENSE
 
 Simple zshell theme for git user.
 
@@ -20,8 +20,8 @@ Installation
 
 .. code-block:: zsh
 
-  % git clone https://github.com/wkentaro/zsh-theme.git ~/.zsh-theme
-  % echo "source ~/.zsh-theme/theme.zsh" >> .zshrc
+  % git clone https://github.com/wkentaro/wkentaro.zsh-theme.git ~/.wkentaro.zsh-theme
+  % echo "source ~/.wkentaro.zsh-theme/wkentaro.zsh-theme" >> .zshrc
 
 Samples
 =======
@@ -46,5 +46,5 @@ License
 =======
 | Copyright (C) 2015 Kentaro Wada
 | Released under the MIT license
-| https://github.com/wkentaro/zsh-theme/blob/master/LICENSE
+| https://github.com/wkentaro/wkentaro.zsh-theme/blob/master/LICENSE
 
