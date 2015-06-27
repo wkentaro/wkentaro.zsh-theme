@@ -20,7 +20,7 @@ theme_precmd () {
 setopt prompt_subst
 
 _newline=$'\n'
-PROMPT='╭─%(!.%{$fg[red]%}.%{$fg[green]%}%n@)%m%{$reset_color%} %{$fg_bold[blue]%}%~%{$fg_bold[magenta]%} ${vcs_info_msg_0_}%{$reset_color%} ${_newline}╰─%# '
+PROMPT='╭─%(!.%{$fg[red]%}.%{$fg_bold[white]%}%n@)%m%{$reset_color%} %{$fg_bold[blue]%}%~%{$fg_bold[magenta]%} ${vcs_info_msg_0_}%{$reset_color%} ${_newline}╰─%# '
 RPROMPT='%{$reset_color%}%T'
 
 autoload -U add-zsh-hook
