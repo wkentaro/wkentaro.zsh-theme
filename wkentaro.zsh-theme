@@ -8,7 +8,7 @@ setopt prompt_subst
 
 _newline=$'\n'
 
-if [ $USE_ZSH_GIT_PROMPT -eq 1 ]; then
+if [ ! -z $USE_ZSH_GIT_PROMPT ]; then
   ZSH_THEME_GIT_PROMPT_PREFIX="("
   ZSH_THEME_GIT_PROMPT_SUFFIX=")"
   ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
