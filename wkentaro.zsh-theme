@@ -6,7 +6,7 @@ autoload -Uz vcs_info
 
 setopt prompt_subst
 
-_newline=$'\n'
+# _newline=$'\n'
 
 if [ ! -z $USE_ZSH_GIT_PROMPT ]; then
   ZSH_THEME_GIT_PROMPT_PREFIX="("
@@ -20,7 +20,8 @@ if [ ! -z $USE_ZSH_GIT_PROMPT ]; then
   ZSH_THEME_GIT_PROMPT_AHEAD="%{↑%G%}"
   ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
   ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[white]%}%{✔%G%}"
-  PROMPT='╭─%(!.%{$fg[red]%}.%{$fg_bold[white]%}%n@)%m%{$reset_color%} %{$fg_bold[blue]%}%~%{$reset_color%} $(git_super_status) ${_newline}╰─%# '
+  # PROMPT='╭─%(!.%{$fg[red]%}.%{$fg_bold[white]%}%n@)%m%{$reset_color%} %{$fg_bold[blue]%}%~%{$reset_color%} $(git_super_status) ${_newline}╰─%# '
+  PROMPT='%(!.%{$fg[red]%}.%{$fg[green]%}%n@)%m%{$reset_color%}:%{$fg_bold[blue]%}%c%{$reset_color%}$(git_super_status) %# '
 else
   zstyle ':vcs_info:*' stagedstr '%F{green}+'
   zstyle ':vcs_info:*' unstagedstr '%F{yellow}*'
@@ -36,7 +37,8 @@ else
       vcs_info
   }
 
-  PROMPT='╭─%(!.%{$fg[red]%}.%{$fg_bold[white]%}%n@)%m%{$reset_color%} %{$fg_bold[blue]%}%~%{$fg_bold[magenta]%} ${vcs_info_msg_0_}%{$reset_color%} ${_newline}╰─%# '
+  # PROMPT='╭─%(!.%{$fg[red]%}.%{$fg_bold[white]%}%n@)%m%{$reset_color%} %{$fg_bold[blue]%}%~%{$fg_bold[magenta]%} ${vcs_info_msg_0_}%{$reset_color%} ${_newline}╰─%# '
+  PROMPT='╭─%(!.%{$fg[red]%}.%{$fg[green]%}%n@)%m%{$reset_color%} %{$fg_bold[blue]%}%c%{$fg_bold[magenta]%} ${vcs_info_msg_0_}%{$reset_color%} ${_newline}╰─%# '
 
   autoload -U add-zsh-hook
   add-zsh-hook precmd  theme_precmd
