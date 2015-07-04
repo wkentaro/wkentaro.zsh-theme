@@ -43,5 +43,3 @@ else
   autoload -U add-zsh-hook
   add-zsh-hook precmd  theme_precmd
 fi
-
-RPROMPT='%{$reset_color%}%T'
