@@ -6,7 +6,7 @@ autoload -Uz vcs_info
 
 setopt prompt_subst
 
-# _newline=$'\n'
+_newline=$'\n'
 
 if [ ! -z $USE_ZSH_GIT_PROMPT ]; then
   ZSH_THEME_GIT_PROMPT_PREFIX="("
@@ -24,21 +24,22 @@ if [ ! -z $USE_ZSH_GIT_PROMPT ]; then
   PROMPT='%(!.%{$fg[red]%}.%{$fg[green]%}%n@)%m%{$reset_color%}:%{$fg_bold[blue]%}%c%{$reset_color%}$(git_super_status) %# '
 else
   zstyle ':vcs_info:*' stagedstr '%F{green}+'
-  zstyle ':vcs_info:*' unstagedstr '%F{yellow}*'
+  zstyle ':vcs_info:*' unstagedstr '%F{226}*'
   zstyle ':vcs_info:*' check-for-changes true
   zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{11}%r'
   zstyle ':vcs_info:*' enable git svn
   theme_precmd () {
       if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-          zstyle ':vcs_info:*' formats '(%b%c%u%B%F{magenta})'
+          zstyle ':vcs_info:*' formats 'on %F{206}%b%c%u%B'
       } else {
-          zstyle ':vcs_info:*' formats '(%b%c%u%B%F{red}…%F{magenta})'
+          zstyle ':vcs_info:*' formats 'on %F{206}%b%c%u%B%F{red}…'
       }
       vcs_info
   }
 
   # PROMPT='╭─%(!.%{$fg[red]%}.%{$fg_bold[white]%}%n@)%m%{$reset_color%} %{$fg_bold[blue]%}%~%{$fg_bold[magenta]%} ${vcs_info_msg_0_}%{$reset_color%} ${_newline}╰─%# '
-  PROMPT='%(!.%{$fg[red]%}.%{$fg[green]%}%n@)%m%{$reset_color%}:%{$fg_bold[blue]%}%c%{$fg_bold[magenta]%}${vcs_info_msg_0_}%{$reset_color%} %# '
+  # PROMPT='%(!.%{$fg[red]%}.%{$fg[green]%}%n@)%m%{$reset_color%}:%{$fg_bold[blue]%}%c%{$fg_bold[magenta]%}${vcs_info_msg_0_}%{$reset_color%} %# '
+  PROMPT='%F{162}%n%{$reset_color%} at %F{215}%m%{$reset_color%} in %F{156}%~%{$reset_color%} ${vcs_info_msg_0_}%{$reset_color%} ${_newline}%# '
 
   autoload -U add-zsh-hook
   add-zsh-hook precmd  theme_precmd
