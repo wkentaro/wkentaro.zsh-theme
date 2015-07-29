@@ -72,8 +72,12 @@ else
     python -c "\
 cwd='$cwd'
 dirs=cwd.split('/')
-if len(dirs) > 4:
-  cwd='/'.join([dirs[0], '…'] + dirs[-3:])
+length = len(dirs)
+while ( length > 2 and
+        len('/'.join(dirs[-(length-1):])) > 30 ):
+    length -= 1
+if len(dirs) > length:
+    cwd='/'.join([dirs[0], '…'] + dirs[-(length-1):])
 print(cwd)
 " 2>&1
   }
