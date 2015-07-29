@@ -66,9 +66,21 @@ else
     fi
   }
 
+  function collapsed_cwd() {
+    local cwd length
+    cwd=$(pwd | sed -e "s,^$HOME,~,")
+    python -c "\
+cwd='$cwd'
+dirs=cwd.split('/')
+if len(dirs) > 4:
+  cwd='/'.join([dirs[0], '…'] + dirs[-3:])
+print(cwd)
+"
+  }
+
   # PROMPT='╭─%(!.%{$fg[red]%}.%{$fg_bold[white]%}%n@)%m%{$reset_color%} %{$fg_bold[blue]%}%~%{$fg_bold[magenta]%} ${vcs_info_msg_0_}%{$reset_color%} ${_newline}╰─%# '
   # PROMPT='%(!.%{$fg[red]%}.%{$fg[green]%}%n@)%m%{$reset_color%}:%{$fg_bold[blue]%}%c%{$fg_bold[magenta]%}${vcs_info_msg_0_}%{$reset_color%} %# '
-  PROMPT='%F{162}%n%{$reset_color%} at %F{215}%m%{$reset_color%} in %F{156}%5c%{$reset_color%}${vcs_info_msg_0_}%{$reset_color%}%(1V. workon %F{111}%1v%{$reset_color%}.)$(ros_indicator) ${_newline}%# '
+  PROMPT='%F{162}%n%{$reset_color%} at %F{215}%m%{$reset_color%} in %F{156}$(collapsed_cwd)%{$reset_color%}${vcs_info_msg_0_}%{$reset_color%}%(1V. workon %F{111}%1v%{$reset_color%}.)$(ros_indicator) ${_newline}%# '
 
   autoload -U add-zsh-hook
   add-zsh-hook precmd  theme_precmd
