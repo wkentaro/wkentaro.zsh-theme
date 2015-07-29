@@ -75,7 +75,7 @@ dirs=cwd.split('/')
 if len(dirs) > 4:
   cwd='/'.join([dirs[0], '…'] + dirs[-3:])
 print(cwd)
-"
+" 2>&1
   }
 
   # PROMPT='╭─%(!.%{$fg[red]%}.%{$fg_bold[white]%}%n@)%m%{$reset_color%} %{$fg_bold[blue]%}%~%{$fg_bold[magenta]%} ${vcs_info_msg_0_}%{$reset_color%} ${_newline}╰─%# '
