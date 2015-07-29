@@ -74,7 +74,7 @@ cwd='$cwd'
 dirs=cwd.split('/')
 length = len(dirs)
 while ( length > 2 and
-        len('/'.join(dirs[-(length-1):])) > 30 ):
+        len('/'.join(dirs[-(length-1):])) > 50 ):
     length -= 1
 if len(dirs) > length:
     cwd='/'.join([dirs[0], '…'] + dirs[-(length-1):])
