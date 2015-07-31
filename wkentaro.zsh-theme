@@ -38,7 +38,7 @@ else
   }
 
   export VIRTUAL_ENV_DISABLE_PROMPT=yes
-  function virtenv_indicator {
+  virtenv_indicator () {
       if [ x$VIRTUAL_ENV != x ]; then
           if [[ $VIRTUAL_ENV == *.virtualenvs/* ]]; then
               ENV_NAME=`basename "${VIRTUAL_ENV}"`
@@ -53,7 +53,7 @@ else
   }
   add-zsh-hook precmd virtenv_indicator
 
-  function ros_indicator() {
+  ros_indicator () {
     if [ -d "/opt/ros" ]; then
       looking_path=$(pwd)
       found=$(find $looking_path -maxdepth 1 -iname package.xml | wc -l)
