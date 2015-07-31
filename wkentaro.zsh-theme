@@ -66,9 +66,11 @@ else
     fi
   }
 
-  function collapsed_cwd() {
-    local cwd length
+  collapsed_cwd () {
+    local cwd
     cwd=$(pwd | sed -e "s,^$HOME,~,")
+    pushd >/dev/null
+    cd ~
     python -c "\
 cwd='$cwd'
 dirs=cwd.split('/')
@@ -80,6 +82,7 @@ if len(dirs) > length:
     cwd='/'.join([dirs[0], '…'] + dirs[-(length-1):])
 print(cwd)
 " 2>&1
+    popd >/dev/null
   }
 
   # PROMPT='╭─%(!.%{$fg[red]%}.%{$fg_bold[white]%}%n@)%m%{$reset_color%} %{$fg_bold[blue]%}%~%{$fg_bold[magenta]%} ${vcs_info_msg_0_}%{$reset_color%} ${_newline}╰─%# '
