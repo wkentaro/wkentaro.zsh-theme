@@ -54,7 +54,7 @@ ros_indicator () {
 collapsed_cwd () {
   local cwd
   cwd=$(pwd | sed -e "s,^$HOME,~,")
-  pushd >/dev/null
+  [ "$(pushd)" = "~" ] && { echo $cwd ; return 0 }
   cd ~
   python -c "\
 cwd='$cwd'
