@@ -15,9 +15,9 @@ zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{11}%r'
 zstyle ':vcs_info:*' enable git svn
 theme_precmd () {
     if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-        zstyle ':vcs_info:*' formats ' on %F{206}%b%c%u%B'
+        zstyle ':vcs_info:*' formats '(%b%c%u%B)'
     } else {
-        zstyle ':vcs_info:*' formats ' on %F{206}%b%c%u%B%F{red}…'
+        zstyle ':vcs_info:*' formats '(%b%c%u%B%F{red}…%F{magenta})'
     }
     vcs_info
 }
@@ -70,7 +70,7 @@ print(cwd)
   popd >/dev/null
 }
 
-PROMPT='%F{162}%n%{$reset_color%} at %F{215}%m%{$reset_color%} in %F{156}$(collapsed_cwd)%{$reset_color%}${vcs_info_msg_0_}%{$reset_color%}%(1V. workon %F{111}%1v%{$reset_color%}.)$(ros_indicator) ${_newline}%# '
+PROMPT='╭─%(!.%{$fg[red]%}.%{$fg_bold[white]%}%n@)%m%{$reset_color%} %{$fg_bold[blue]%}%~ %{$fg_bold[magenta]%}${vcs_info_msg_0_}%{$reset_color%} ${_newline}╰─%# '
 
 autoload -U add-zsh-hook
 add-zsh-hook precmd  theme_precmd
