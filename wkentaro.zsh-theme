@@ -67,7 +67,7 @@ if len(dirs) > length:
   cwd='/'.join([dirs[0], '…'] + dirs[-(length-1):])
 print(cwd)
 " 2>&1
-  popd >/dev/null
+  popd &>/dev/null
 }
 
 PROMPT='%F{162}%n%{$reset_color%} at %F{215}%m%{$reset_color%} in %F{156}$(collapsed_cwd)%{$reset_color%}${vcs_info_msg_0_}%{$reset_color%}%(1V. workon %F{111}%1v%{$reset_color%}.)$(ros_indicator) ${_newline}%# '
