@@ -52,25 +52,29 @@ ros_indicator () {
 }
 
 collapsed_cwd () {
-  local cwd
+  local cwd ds length shorten is_changed
   cwd=$(pwd | sed -e "s,^$HOME,~,")
-  pushd >/dev/null
-  cd ~
-  python -c "\
-cwd='$cwd'
-dirs=cwd.split('/')
-length = len(dirs)
-while ( length > 2 and
-      len('/'.join(dirs[-(length-1):])) > 50 ):
-  length -= 1
-if len(dirs) > length:
-  cwd='/'.join([dirs[0], '…'] + dirs[-(length-1):])
-print(cwd)
-" 2>&1
-  popd >/dev/null
+  ds=$(echo $cwd | tr '/' ' ')
+  is_changed=0
+  length=${#${=ds}}
+  shorten=${${=ds}[-$length,-1]}
+  while [ $length -gt 1 -a ${#shorten} -gt 46 ]; do
+    is_changed=1
+    length=$(( $length - 1 ))
+    shorten=${${=ds}[-$length,-1]}
+  done
+  if [ $is_changed -eq 1 ]; then
+    if [ "${${=ds}[1]}" = "~" ]; then
+      echo '~/…/'$(echo $shorten | tr ' ' '/')
+    else
+      echo '/…/'$(echo $shorten | tr ' ' '/')
+    fi
+  else
+    echo $cwd
+  fi
 }
 
-PROMPT='╭─%(!.%{$fg[red]%}.%{$fg_bold[white]%}%n@)%m%{$reset_color%} %{$fg_bold[blue]%}%~ %{$fg_bold[magenta]%}${vcs_info_msg_0_}%{$reset_color%} ${_newline}╰─%# '
+PROMPT='╭─%(!.%{$fg[red]%}.%{$fg_bold[white]%}%n@)%m%{$reset_color%} %{$fg_bold[blue]%}$(collapsed_cwd) %{$fg_bold[magenta]%}${vcs_info_msg_0_}%{$reset_color%} ${_newline}╰─%# '
 
 autoload -U add-zsh-hook
 add-zsh-hook precmd  theme_precmd
