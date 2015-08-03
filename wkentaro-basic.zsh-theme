@@ -13,7 +13,7 @@ zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{11}%r'
 zstyle ':vcs_info:*' enable git svn hg bzr
 theme_precmd () {
   if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-    zstyle ':vcs_info:*' formats '(%b%c%u%B)'
+    zstyle ':vcs_info:*' formats '(%b%c%u%B%F{magenta})'
   } else {
     zstyle ':vcs_info:*' formats '(%b%c%u%B%F{red}…%F{magenta})'
   }
