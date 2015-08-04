@@ -23,25 +23,6 @@ Installation
   % git clone https://github.com/wkentaro/wkentaro.zsh-theme.git ~/.wkentaro.zsh-theme
   % echo "source ~/.wkentaro.zsh-theme/wkentaro.zsh-theme" >> .zshrc
 
-Samples
-=======
-
-Normal
-------
-.. image:: img/normal.png
-
-Untracked Files (Red)
---------------------
-.. image:: img/untracked_files.png
-
-Staged Changes (Green)
-----------------------
-.. image:: img/staged_changes.png
-
-Not staged Changes (Yellow)
--------------------------
-.. image:: img/not_staged_changes.png
-
 License
 =======
 | Copyright (C) 2015 Kentaro Wada
