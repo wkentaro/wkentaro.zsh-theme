@@ -16,12 +16,23 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{11}%r'  # red, yellow
 zstyle ':vcs_info:*' enable git svn hg bzr
 
+_vcs_clean () {
+  local dirty=0
+  if [ -d .git ]; then
+    [ "$(git ls-files --other --exclude-standard 2> /dev/null)" = "" ] || dirty=1
+  fi
+  if [ -d .hg ]; then
+    [ "$(hg st 2>/dev/null | awk '{print $1}' | grep '\?')" = "" ] || dirty=1
+  fi
+  return $dirty
+}
+
 prompt_precmd () {
-  if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
+  if _vcs_clean; then
     zstyle ':vcs_info:*' formats ' on %F{206}%b%c%u%B'  # magenta
-  } else {
+  else
     zstyle ':vcs_info:*' formats ' on %F{206}%b%c%u%B%F{red}…'  # magenta, red
-  }
+  fi
   vcs_info
 }
 add-zsh-hook precmd prompt_precmd
