@@ -18,7 +18,7 @@ zstyle ':vcs_info:*' enable git svn hg bzr
 
 _git_is_dirty () {
   local dirty=0
-  [ $(git status --porcelain | grep '^??' 2>/dev/null | wc -l) -eq 0 ] || dirty=1
+  [ $(git status --porcelain 2>/dev/null | grep '^??' | wc -l) -eq 0 ] || dirty=1
   return $dirty
 }
 
