@@ -7,6 +7,7 @@ autoload -Uz vcs_info
 autoload -U add-zsh-hook
 
 setopt prompt_subst
+setopt transient_rprompt
 
 _newline=$'\n'
 
@@ -85,3 +86,4 @@ collapsed_cwd () {
 }
 
 PROMPT='%F{162}%n%{$reset_color%} at %F{215}%m%{$reset_color%} in %F{156}$(collapsed_cwd)%{$reset_color%}${vcs_info_msg_0_}%{$reset_color%}%(1V. workon %F{111}%1v%{$reset_color%}.)$(ros_indicator) ${_newline}%(?,%F{green},%F{red})%#%{$reset_color%} '
+RPROMPT='%{%B%}%D{%Y/%m/%d %H:%M}%{%b%}'
