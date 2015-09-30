@@ -63,11 +63,12 @@ ros_indicator () {
 }
 
 collapsed_cwd () {
-  local cwd ds length shorten is_changed
+  local cwd ds length root shorten is_changed
   cwd=$(pwd | sed -e "s,^$HOME,~,")
   ds=$(echo $cwd | tr '/' ' ')
   is_changed=0
   length=${#${=ds}}
+  root=${${=ds}[0]}
   shorten=${${=ds}[-$length,-1]}
   while [ $length -gt 1 -a ${#shorten} -gt 46 ]; do
     is_changed=1
@@ -75,11 +76,7 @@ collapsed_cwd () {
     shorten=${${=ds}[-$length,-1]}
   done
   if [ $is_changed -eq 1 ]; then
-    if [ "${${=ds}[1]}" = "~" ]; then
-      echo '~/…/'$(echo $shorten | tr ' ' '/')
-    else
-      echo '/…/'$(echo $shorten | tr ' ' '/')
-    fi
+    echo "$root/…/"$(echo $shorten | tr ' ' '/')
   else
     echo $cwd
   fi
