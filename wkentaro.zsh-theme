@@ -84,4 +84,4 @@ collapsed_cwd () {
   fi
 }
 
-PROMPT='%F{162}%n%{$reset_color%} at %F{215}%m%{$reset_color%} in %F{156}$(collapsed_cwd)%{$reset_color%}${vcs_info_msg_0_}%{$reset_color%}%(1V. workon %F{111}%1v%{$reset_color%}.)$(ros_indicator) ${_newline}%# '
+PROMPT='%F{162}%n%{$reset_color%} at %F{215}%m%{$reset_color%} in %F{156}$(collapsed_cwd)%{$reset_color%}${vcs_info_msg_0_}%{$reset_color%}%(1V. workon %F{111}%1v%{$reset_color%}.)$(ros_indicator) ${_newline}%(?,%F{green},%F{red})%#%{$reset_color%} '
