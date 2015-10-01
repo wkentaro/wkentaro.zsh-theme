@@ -94,7 +94,7 @@ count_prompt_chars() {
 prompt_left1='$(_show_rosenv)%F{162}%n%{$reset_color%} at %F{215}%m%{$reset_color%}'
 prompt_left2=' in %F{156}$(collapsed_cwd)%{$reset_color%}'
 prompt_left3='${vcs_info_msg_0_}%{$reset_color%}%(1V. workon %F{111}%1v%{$reset_color%}.)$(ros_indicator) ${_newline}%(?,%F{green},%F{red})%#%{$reset_color%} '
-RPROMPT='%{%B%}%D{%Y/%m/%d %H:%M}%{%b%}'
+RPROMPT='%D{%H:%M}'
 
 update_prompt () {
   local prompt_left1_len=$(count_prompt_chars "$prompt_left1")
