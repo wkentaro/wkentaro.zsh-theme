@@ -62,6 +62,9 @@ ros_indicator () {
   fi
 }
 _show_rosenv () {
+  if [ "$ROS_MASTER_URI" = "" ]; then
+    return
+  fi
   if [[ ! $ROS_MASTER_URI =~ "http://localhost.*" ]]; then
     echo "%F{red}[$ROS_MASTER_URI][$ROS_IP]%{$reset_color%} "
   fi
