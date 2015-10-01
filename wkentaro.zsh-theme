@@ -98,7 +98,7 @@ count_prompt_chars() {
 }
 
 _ssh_connection_color () {
-  if [ "SSH_CONNECTION" = "" ]; then
+  if [ "$SSH_CONNECTION" = "" ]; then
     echo "%F{215}"
   else
     echo "%F{171}"
