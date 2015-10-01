@@ -91,7 +91,15 @@ count_prompt_chars() {
   print -n -P -- "$1" | sed -e $'s/\e\[[0-9;]*m//g' | wc -m | sed -e 's/ //g'
 }
 
-prompt_left1='$(_show_rosenv)%F{162}%n%{$reset_color%} at %F{215}%m%{$reset_color%}'
+_ssh_connection_color () {
+  if [ -z SSH_CONNECTION ]; then
+    echo "%F{206}"
+  else
+    echo "%F{215}"
+  fi
+}
+
+prompt_left1='$(_show_rosenv)%F{162}%n%{$reset_color%} at $(_ssh_connection_color)%m%{$reset_color%}'
 prompt_left2=' in %F{156}$(collapsed_cwd)%{$reset_color%}'
 prompt_left3='${vcs_info_msg_0_}%{$reset_color%}%(1V. workon %F{111}%1v%{$reset_color%}.)$(ros_indicator) ${_newline}%(?,%F{green},%F{red})%#%{$reset_color%} '
 RPROMPT='%D{%H:%M}'
