@@ -61,6 +61,11 @@ ros_indicator () {
     echo " rosp %F{045}$(basename $looking_path)%{$reset_color%}"
   fi
 }
+_show_rosenv () {
+  if [[ ! $ROS_MASTER_URI =~ "http://localhost.*" ]]; then
+    echo "%F{red}[$ROS_MASTER_URI][$ROS_IP]%{$reset_color%} "
+  fi
+}
 
 collapsed_cwd () {
   local cwd ds length root shorten is_changed
@@ -86,7 +91,7 @@ count_prompt_chars() {
   print -n -P -- "$1" | sed -e $'s/\e\[[0-9;]*m//g' | wc -m | sed -e 's/ //g'
 }
 
-prompt_left1='%F{162}%n%{$reset_color%} at %F{215}%m%{$reset_color%}'
+prompt_left1='$(_show_rosenv)%F{162}%n%{$reset_color%} at %F{215}%m%{$reset_color%}'
 prompt_left2=' in %F{156}$(collapsed_cwd)%{$reset_color%}'
 prompt_left3='${vcs_info_msg_0_}%{$reset_color%}%(1V. workon %F{111}%1v%{$reset_color%}.)$(ros_indicator) ${_newline}%(?,%F{green},%F{red})%#%{$reset_color%} '
 RPROMPT='%{%B%}%D{%Y/%m/%d %H:%M}%{%b%}'
