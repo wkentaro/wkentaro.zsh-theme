@@ -86,18 +86,30 @@ count_prompt_chars() {
   print -n -P -- "$1" | sed -e $'s/\e\[[0-9;]*m//g' | wc -m | sed -e 's/ //g'
 }
 
-prompt_left1='%F{162}%n%{$reset_color%} at %F{215}%m%{$reset_color%} in %F{156}$(collapsed_cwd)%{$reset_color%}'
-prompt_left2='${vcs_info_msg_0_}%{$reset_color%}%(1V. workon %F{111}%1v%{$reset_color%}.)$(ros_indicator) ${_newline}%(?,%F{green},%F{red})%#%{$reset_color%} '
+prompt_left1='%F{162}%n%{$reset_color%} at %F{215}%m%{$reset_color%}'
+prompt_left2=' in %F{156}$(collapsed_cwd)%{$reset_color%}'
+prompt_left3='${vcs_info_msg_0_}%{$reset_color%}%(1V. workon %F{111}%1v%{$reset_color%}.)$(ros_indicator) ${_newline}%(?,%F{green},%F{red})%#%{$reset_color%} '
 RPROMPT='%{%B%}%D{%Y/%m/%d %H:%M}%{%b%}'
 
 update_prompt () {
   local prompt_left1_len=$(count_prompt_chars "$prompt_left1")
   local prompt_left2_len=$(count_prompt_chars "$prompt_left2")
+  local prompt_left3_len=$(count_prompt_chars "$prompt_left3")
   local prompt_left_rest=$[COLUMNS - prompt_left1_len]
   if [ $prompt_left_rest -gt $prompt_left2_len ]; then
-    PROMPT="$prompt_left1$prompt_left2"
+    prompt_left_rest=$[prompt_left_rest - prompt_left2_len]
+    if [ $prompt_left_rest -gt $prompt_left3_len ]; then
+      PROMPT="$prompt_left1$prompt_left2$prompt_left3"
+    else
+      PROMPT="$prompt_left1$prompt_left2${_newline}…$prompt_left3}"
+    fi
   else
-    PROMPT="$prompt_left1${_newline}$prompt_left2"
+    prompt_left_rest=$[COLUMNS - prompt_left2_len]
+    if [ $prompt_left_rest -gt $prompt_left3_len ]; then
+      PROMPT="$prompt_left1${_newline}…$prompt_left2$prompt_left3"
+    else
+      PROMPT="$prompt_left1${_newline}…$prompt_left2${_newline}…$prompt_left3"
+    fi
   fi
 }
 
