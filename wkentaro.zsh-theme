@@ -101,7 +101,7 @@ update_prompt () {
     if [ $prompt_left_rest -gt $prompt_left3_len ]; then
       PROMPT="$prompt_left1$prompt_left2$prompt_left3"
     else
-      PROMPT="$prompt_left1$prompt_left2${_newline}…$prompt_left3}"
+      PROMPT="$prompt_left1$prompt_left2${_newline}…$prompt_left3"
     fi
   else
     prompt_left_rest=$[COLUMNS - prompt_left2_len]
