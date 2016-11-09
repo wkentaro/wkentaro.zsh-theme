@@ -105,7 +105,7 @@ _ssh_connection_color () {
   fi
 }
 
-prompt_left1='$(_show_rosenv)%F{005}%n%{$reset_color%} at $(_ssh_connection_color)%h%{$reset_color%}'
+prompt_left1='$(_show_rosenv)%F{005}%n%{$reset_color%} at $(_ssh_connection_color)%m%{$reset_color%}'
 prompt_left2=' in %F{156}$(collapsed_cwd)%{$reset_color%}'
 prompt_left3='${vcs_info_msg_0_}%{$reset_color%}%(1V. workon %F{111}%1v%{$reset_color%}.)$(ros_indicator) ${_newline}%(?,%F{green},%F{red})%#%{$reset_color%} '
 
