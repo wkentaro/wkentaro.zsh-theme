@@ -41,13 +41,22 @@ virtenv_indicator () {
       folder=`dirname "${VIRTUAL_ENV}"`
       ENV_NAME=`basename "$folder"`
     fi
-    psvar[1]=$ENV_NAME
+    psvar[1]="venv:$ENV_NAME"
   else
     psvar[1]=''
   fi
 }
 VIRTUAL_ENV_DISABLE_PROMPT=yes
 add-zsh-hook precmd virtenv_indicator
+
+anaconda_indicator () {
+  if [ x$CONDA_DEFAULT_ENV != x ]; then
+    psvar[1]="conda:$CONDA_DEFAULT_ENV"
+  else
+    psvar[1]=''
+  fi
+}
+add-zsh-hook precmd anaconda_indicator
 
 ros_indicator () {
   if [ -d "/opt/ros" ]; then
