@@ -60,7 +60,8 @@ ros_indicator () {
       [ "$looking_path" = "/" ] && return
       found=$(find $looking_path -maxdepth 1 -iname package.xml | wc -l)
     done
-    echo " rosp %F{045}$(basename $looking_path)%{$reset_color%}"
+    pkg_name=$(grep '<name>' $looking_path/package.xml | sed -e 's,.*<name>\(.*\)</name>,\1,g')
+    echo " rosp %F{045}$(basename $pkg_name)%{$reset_color%}"
   fi
 }
 _show_rosenv () {
