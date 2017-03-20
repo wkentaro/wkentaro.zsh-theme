@@ -109,7 +109,8 @@ _ssh_connection_color () {
 }
 
 prompt_left1='$(_show_rosenv)%F{005}%n%{$reset_color%} at $(_ssh_connection_color)%m%{$reset_color%}'
-prompt_left2=' in %F{156}$(collapsed_cwd)%{$reset_color%}'
+# prompt_left2=' in %F{156}$(collapsed_cwd)%{$reset_color%} tm %F{purple}$(date +'%a %b %d %H:%M')%{$reset_color%}'
+prompt_left2=' in %F{156}$(collapsed_cwd)%{$reset_color%} tm %F{147}$(date +"%H:%M")%{$reset_color%}'
 prompt_left3='${vcs_info_msg_0_}%{$reset_color%}%(1V. workon %F{111}%1v%{$reset_color%}.)$(ros_indicator) ${_newline}%(?,%F{green},%F{red})%#%{$reset_color%} '
 
 update_prompt () {
