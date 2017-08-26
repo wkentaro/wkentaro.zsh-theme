@@ -80,7 +80,7 @@ collapsed_cwd () {
   is_changed=0
   length=${#${=ds}}
   shorten=${${=ds}[-$length,-1]}
-  while [ $length -gt 1 -a ${#shorten} -gt 46 ]; do
+  while [ $length -gt 1 -a ${#shorten} -gt ${COLUMNS} ]; do
     is_changed=1
     length=$(( $length - 1 ))
     shorten=${${=ds}[-$length,-1]}
