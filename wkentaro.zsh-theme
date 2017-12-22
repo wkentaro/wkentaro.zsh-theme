@@ -43,7 +43,8 @@ virtenv_indicator () {
     fi
     psvar[1]="venv:$ENV_NAME"
   elif [ x$CONDA_DEFAULT_ENV != x ]; then
-    psvar[1]="conda:$CONDA_DEFAULT_ENV"
+    prefix=$(echo $CONDA_PREFIX | sed -e "s,^$HOME,~,")
+    psvar[1]="conda:$CONDA_DEFAULT_ENV ($prefix)"
   else
     psvar[1]=""
   fi
