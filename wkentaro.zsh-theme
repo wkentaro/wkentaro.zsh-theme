@@ -18,9 +18,8 @@ zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{11}%r'  # red, yellow
 zstyle ':vcs_info:*' enable git svn hg bzr
 
 _git_is_dirty () {
-  local dirty=0
-  [ $(git status --porcelain 2>/dev/null | grep '^??' | wc -l) -eq 0 ] || dirty=1
-  return $dirty
+  git diff-files --no-ext-diff --quiet 2>/dev/null || git diff-index --no-ext-diff --quiet --cached HEAD 2>/dev/null
+  return $?
 }
 
 prompt_precmd () {
