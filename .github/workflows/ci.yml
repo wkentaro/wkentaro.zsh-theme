@@ -1,0 +1,23 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Install ZSH
+      run: |
+       sudo apt install zsh
+
+    - name: Test
+      run: |
+        zsh -c "source wkentaro.zsh-theme" || { echo "failed to source" ; exit 1 ; }
