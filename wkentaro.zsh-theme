@@ -17,6 +17,15 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{11}%r'  # red, yellow
 zstyle ':vcs_info:*' enable git svn hg bzr
 
+### git: Show marker (S) if there are skip-worktree files in repository
+zstyle ':vcs_info:git*+set-message:*' hooks git-skip-worktree
+
++vi-git-skip-worktree(){
+  if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && git ls-files -v | grep -q '^S' &> /dev/null; then
+    hook_com[staged]+=" [$(git ls-files -v | grep '^S')]"
+  fi
+}
+
 _git_is_dirty () {
   git diff-files --no-ext-diff --quiet 2>/dev/null || git diff-index --no-ext-diff --quiet --cached HEAD 2>/dev/null
   return $?
@@ -62,6 +71,12 @@ ros_indicator () {
     done
     pkg_name=$(grep '<name>' $looking_path/package.xml | sed -e 's,.*<name>\(.*\)</name>,\1,g')
     echo " rosp %F{045}$(basename $pkg_name)%{$reset_color%}"
+  fi
+  if [ "$USER" = "mujin" ]; then
+    if [ "$MUJIN_JHBUILD_CHECKOUT_DIR" != "" ]; then
+      workspace_name=$(basename $(dirname $MUJIN_JHBUILD_CHECKOUT_DIR))
+      echo " mws %F{045}${workspace_name}%{$reset_color%}"
+    fi
   fi
 }
 _show_rosenv () {
