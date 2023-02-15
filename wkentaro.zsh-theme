@@ -22,7 +22,7 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-skip-worktree
 
 +vi-git-skip-worktree(){
   if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && git ls-files -v | grep -q '^S' &> /dev/null; then
-    hook_com[staged]+=" [$(git ls-files -v | grep '^S')]"
+    hook_com[staged]+=" %F{5}[$(git ls-files -v | grep '^S')]"
   fi
 }
 
